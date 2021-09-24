@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" href="css/estilos.css">
+  <link rel="shortcut icon" href="img/logo-fake.png" type="image/x-icon">
 </head>
 
 <body>
@@ -51,23 +52,56 @@
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Tecnología</a>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0" method=GET action="http://www.google.com/search">
+        <input type="search" placeholder="Buscar . . ." id="inputBusqueda" class="form-inline my-2 my-lg-0" />
+
+        <!--form class="form-inline my-2 my-lg-0" method=GET action="http://www.google.com/search">
           <fieldset>
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name=q value=""
               id="cover-ctn-search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="btnG"
               value="Búsqueda Google">Buscar</button>
           </fieldset>
-        </form>
+        </form-->
       </div>
     </nav>
   </div>
-  <br><br><br>
+  <br>
+  <!-- Busqueda -->
+  <div class="search" id="search">
+    <table class="search-tabla" id="searchTabla">
+      <thead>
+        <tr>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody id="tabla"></tbody>
+    </table>
+  </div>
+  <script>
+    $("#inputBusqueda").keyup(function () {
+      var consulta = $("#searchTabla").DataTable();
+      consulta.search($(this).val()).draw();
+
+      if ($("#inputBusqueda").val() == "") {
+        $(".resultados").css({
+          "height": "auto",
+          "background": "none"
+        });
+
+        $("#search").hide();
+
+      } else {
+        $("#search").fadeIn("fast");
+      }
+    });
+
+  </script>
+  <br><br>
   <!--Aqui termina el header-->
   <!--###############################################################-->
   <!--Aqui empieza la primera fila-->
   <div class="card-deck">
-    <div class="card">
+    <div class="card" value="stand de los besos">
       <a href="https://uqload.com/embed-mqga1tl5t3z0.html" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO
         WIDTH=640 HEIGHT=360 allowfullscreen aria-controls="" download="stand-de-los-beso.mp4"><img src="img/besos.jpg"
           class="card-img-top" alt="..."></a>
@@ -203,7 +237,7 @@
   <!--Aqui termina la tercera fila-->
   <br>
   <!-- Footer-->
-  <footer class="footer py-4 footer-light bg-light" style="border-top-left-radius: 15px;border-top-right-radius: 15px;">
+  <footer class="footer py-4 footer-light bg-dark" style="border-top-left-radius: 15px;border-top-right-radius: 15px;">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-4 text-lg-left">Copyright © The-Zero 2020<br>Miguel Angel Fabian</div>
